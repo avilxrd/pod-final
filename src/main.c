@@ -167,11 +167,13 @@ int main() {
     lerArq1(&listaCursos, "data/arq1.txt");
     lerArq3(&listaNotas, "data/arq3.txt");
 
+    /*
     printf("Cursos (arquivo 1): \n");
     mostrarCursos(listaCursos.inicio);
 
     printf("\nNotas (arquivo 3): \n");
     mostrarNotas(listaNotas.inicio);
-
+    */
+   
     return 0;
 }
