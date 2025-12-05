@@ -1,1 +1,1 @@
-gcc -ansi -pedantic -Wall -Wextra -o ./out/bin ./src/main.c
+gcc -ansi -pedantic -Wall -Wextra -I ./libs ./src/*.c -o ./out/main
