@@ -6,7 +6,7 @@
 #include <strings.h>
 #include "curso.h"
 
-#define MAX_TOP 100  /* máximo de notas a mostrar */
+#define MAX_TOP 1000  /* máximo de notas a mostrar */
 
 typedef struct Nota {
     int co_curso; 

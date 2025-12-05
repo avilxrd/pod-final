@@ -64,7 +64,7 @@ int main() {
             printf("Digite codigo do grupo: "); if (scanf("%d",&grupo)!=1) break;
             listarCursosArv(raizCursos,"grupo",grupo);
         } else if (opc==5) {
-            printf("Quantas maiores notas mostrar (max. 100)? "); if (scanf("%d",&n)!=1) break;
+            printf("Quantas maiores notas mostrar (max. 1000)? "); if (scanf("%d",&n)!=1) break;
             printf("Tipo de nota ( [1] Geral     [2] Específica ): "); if (scanf("%d",&t)!=1) break;
             mostrarTopNotas(&listaNotas,raizCursos,n,t);
         } else if (opc==6) {
