@@ -11,13 +11,23 @@ typedef struct Curso {
     int co_ies;
     int co_grupo;
     int co_uf;
+    int altura;
     struct Curso *esq;
     struct Curso *dir;
 } Curso;
 
+int altura(Curso *n);
+
+int max(int a, int b);
+
+Curso* rotacaoDireita(Curso *y);
+
+Curso* rotacaoEsquerda(Curso *x);
+
+int fatorBalanceamento(Curso *n);
 
 /* aloca um novo nó para um curso lido no arquivo
-   e insere na BST                             */
+   e insere na AVL                             */
 Curso* inserirCursoArv(Curso *raiz, Curso c);
 
 /* busca um curso na árvore */
