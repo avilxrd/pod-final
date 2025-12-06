@@ -16,14 +16,11 @@ typedef struct Curso {
     struct Curso *dir;
 } Curso;
 
+/* funções utilitárias para transformar a BST numa AVL */
 int altura(Curso *n);
-
 int max(int a, int b);
-
 Curso* rotacaoDireita(Curso *y);
-
 Curso* rotacaoEsquerda(Curso *x);
-
 int fatorBalanceamento(Curso *n);
 
 /* aloca um novo nó para um curso lido no arquivo

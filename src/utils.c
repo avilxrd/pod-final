@@ -1,5 +1,10 @@
 #include "utils.h"
 
+void throwMsgError(void) {
+    printf("\n%snão encontrado!%s\n", COLOR_RED, COLOR_RESET);
+    return;
+}
+
 Curso* lerArq1(const char *nome) {
     FILE *f;
     char linha[2048];
@@ -28,7 +33,7 @@ Curso* lerArq1(const char *nome) {
     return raiz;
 }
 
-void lerArq3(ListaNota *lista, const char *nome) {
+void lerArq3(VetorNotas *v, const char *nome) {
     FILE *f;
     char linha[4096];
     Nota n;
@@ -47,7 +52,8 @@ void lerArq3(ListaNota *lista, const char *nome) {
         for (i=0;i<7;i++) token=strtok(NULL,";");
         token = strtok(NULL,";"); n.nt_es = token ? atof(token) : -1.0f;
 
-        inserirNota(lista, n);
+        inserirNota(v, n);
     }
     fclose(f);
+    ordenarNotas(v);
 }

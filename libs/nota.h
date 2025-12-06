@@ -6,19 +6,19 @@
 #include <strings.h>
 #include "curso.h"
 
-#define MAX_TOP 1000  /* máximo de notas a mostrar */
+#define MAX_TOP 500000  /* máximo de notas a mostrar */
 
-typedef struct Nota {
+typedef struct {
     int co_curso; 
     float nt_ger;
     float nt_es;
-    struct Nota *next;
 } Nota;
 
 typedef struct {
-    Nota *inicio;
-    Nota *fim;
-} ListaNota;
+    Nota *vetor;
+    int tamanho;
+    int capacidade;
+} VetorNotas;
 
 typedef struct {
     int co_curso;
@@ -26,20 +26,18 @@ typedef struct {
     float nota;
 } TopNota;
 
+/* funções do vetor dinâmico */
+void inserirNota(VetorNotas *v, Nota n);
+void ordenarNotas(VetorNotas *v);  
+Nota *buscarNotaCurso(VetorNotas *v, int co_curso); 
 
-/* insere uma nota na linked list */
-void inserirNota(ListaNota *lista, Nota n);
+/* funções que usam o acesso sequencial (nos dados ordenados) 
+   apenas funções que tem que mostrar todos os dados       */
+void mostrarNotasCurso(VetorNotas *v, int co_curso);
+void mostrarMediaNotasCurso(VetorNotas *v, int co_curso);
 
-/* mostra as notas que pertencem a um curso */
-void mostrarNotasCurso(ListaNota *lista, int co_curso);
-
-/* mostra a média de notas de um curso */
-void mostrarMediaNotasCurso(ListaNota *lista, int co_curso);
-
-/* carrega as top notas */
+/* funções do top n notas */
 void insereTopNota(TopNota top[], int n, TopNota nova);
+void mostrarTopNotas(VetorNotas *v, Curso *raiz, int n, int tipo);
 
-/* mostra as top notas */
-void mostrarTopNotas(ListaNota *lista, Curso *raiz, int n, int tipo);
-
-#endif /* NOTA_H */
+#endif

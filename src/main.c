@@ -5,22 +5,20 @@
 
 int main() {
     Curso *raizCursos;
-    ListaNota listaNotas;
+    VetorNotas vetorNotas = {0};
     int opc;
-    
-    listaNotas.inicio = NULL;
-    listaNotas.fim = NULL;
+
     system("clear || cls");
 
-    printf("%s->%s lendo o %sarquivo 1%s e inserindo na %sAVL%s...         ", COLOR_YELLOW, COLOR_WHITE, COLOR_GREEN, COLOR_WHITE, COLOR_GREEN, COLOR_WHITE);
+    printf("%s->%s lendo o %sarquivo 1%s e inserindo na %sAVL%s...            ", COLOR_YELLOW, COLOR_WHITE, COLOR_GREEN, COLOR_WHITE, COLOR_GREEN, COLOR_WHITE);
     fflush(stdout);
     raizCursos = lerArq1("data/arq1.txt");
     printf("[%sOK%s]\n", COLOR_GREEN, COLOR_WHITE);
 
 
-    printf("%s->%s lendo o %sarquivo 3%s e inserindo na %sLINKED LIST%s... ", COLOR_YELLOW, COLOR_WHITE, COLOR_GREEN, COLOR_WHITE, COLOR_GREEN, COLOR_WHITE);
+    printf("%s->%s lendo o %sarquivo 3%s e inserindo no %sVETOR DINÂMICO%s... ", COLOR_YELLOW, COLOR_WHITE, COLOR_GREEN, COLOR_WHITE, COLOR_GREEN, COLOR_WHITE);
     fflush(stdout);
-    lerArq3(&listaNotas,"data/arq3.txt");
+    lerArq3(&vetorNotas,"data/arq3.txt");
     printf("[%sOK%s]", COLOR_GREEN, COLOR_WHITE);
 
     for(;;) {
@@ -51,8 +49,8 @@ int main() {
                     COLOR_YELLOW, COLOR_RESET, c->co_grupo, 
                     COLOR_YELLOW, COLOR_RESET, c->co_uf, 
                     COLOR_YELLOW, COLOR_RESET, c->ano);
-                mostrarNotasCurso(&listaNotas,c->co_curso);
-            } else printf("\n%sCurso nao encontrado%s\n", COLOR_RED, COLOR_WHITE);
+                mostrarNotasCurso(&vetorNotas,c->co_curso);
+            } else throwMsgError();
 
         } else if (opc==2) {
             printf("Digite codigo da IES: "); if (scanf("%d",&ies)!=1) break;
@@ -64,12 +62,12 @@ int main() {
             printf("Digite codigo do grupo: "); if (scanf("%d",&grupo)!=1) break;
             listarCursosArv(raizCursos,"grupo",grupo);
         } else if (opc==5) {
-            printf("Quantas maiores notas mostrar (max. 1000)? "); if (scanf("%d",&n)!=1) break;
+            printf("Quantas maiores notas mostrar (500000 para mostrar todas ordenadas)? "); if (scanf("%d",&n)!=1) break;
             printf("Tipo de nota ( [1] Geral     [2] Específica ): "); if (scanf("%d",&t)!=1) break;
-            mostrarTopNotas(&listaNotas,raizCursos,n,t);
+            mostrarTopNotas(&vetorNotas,raizCursos,n,t);
         } else if (opc==6) {
             printf("Digite codigo do curso para media: "); if (scanf("%d",&cod)!=1) break;
-            mostrarMediaNotasCurso(&listaNotas,cod);
+            mostrarMediaNotasCurso(&vetorNotas,cod);
         } else printf("Opcao invalida\n");
     }
 

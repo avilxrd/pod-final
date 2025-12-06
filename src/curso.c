@@ -1,13 +1,9 @@
 #include "curso.h"
 #include "utils.h"
 
-int altura(Curso *n) {
-    return n ? n->altura : 0;
-}
+int altura(Curso *n) { return n ? n->altura : 0; }
 
-int max(int a, int b) {
-    return (a > b) ? a : b;
-}
+int max(int a, int b) { return (a > b) ? a : b; }
 
 Curso* rotacaoDireita(Curso *y) {
     Curso *x = y->esq;
@@ -35,9 +31,7 @@ Curso* rotacaoEsquerda(Curso *x) {
     return y;
 }
 
-int fatorBalanceamento(Curso *n) {
-    return n ? altura(n->esq) - altura(n->dir) : 0;
-}
+int fatorBalanceamento(Curso *n) { return n ? altura(n->esq) - altura(n->dir) : 0; }
 
 Curso* inserirCursoArv(Curso *raiz, Curso c) {
     int fb;
@@ -50,7 +44,7 @@ Curso* inserirCursoArv(Curso *raiz, Curso c) {
         return novo;
     }
 
-    if (c.co_curso < raiz->co_curso) raiz->esq = inserirCursoArv(raiz->esq, c);
+    if      (c.co_curso < raiz->co_curso) raiz->esq = inserirCursoArv(raiz->esq, c);
     else if (c.co_curso > raiz->co_curso) raiz->dir = inserirCursoArv(raiz->dir, c);
     else return raiz;
 
@@ -58,11 +52,8 @@ Curso* inserirCursoArv(Curso *raiz, Curso c) {
 
     fb = fatorBalanceamento(raiz);
 
-    if (fb > 1 && c.co_curso < raiz->esq->co_curso)
-        return rotacaoDireita(raiz);
-
-    if (fb < -1 && c.co_curso > raiz->dir->co_curso)
-        return rotacaoEsquerda(raiz);
+    if (fb >  1 && c.co_curso < raiz->esq->co_curso) return rotacaoDireita(raiz);
+    if (fb < -1 && c.co_curso > raiz->dir->co_curso) return rotacaoEsquerda(raiz);
 
     if (fb > 1 && c.co_curso > raiz->esq->co_curso) {
         raiz->esq = rotacaoEsquerda(raiz->esq);

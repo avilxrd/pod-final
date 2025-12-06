@@ -7,6 +7,8 @@
 #include "curso.h"
 #include "nota.h"
 
+/* códigos ANSI de algumas cores para
+   melhorar a visualização dos dados */
 #define COLOR_RESET   "\033[0m"
 #define COLOR_BLACK   "\033[30m"
 #define COLOR_RED     "\033[31m"
@@ -17,12 +19,15 @@
 #define COLOR_CYAN    "\033[36m"
 #define COLOR_WHITE   "\033[37m"
 
-/* lê o arquivo 1 com os microdados do ENADE e insere 
-   em uma BST (até então)                          */
-Curso* lerArq1(const char *nome);
+/* apenas um print default de erro */
+void throwMsgError(void);
 
 /* lê o arquivo 1 com os microdados do ENADE e insere 
-   em uma LINKED LIST (até então)                  */
-void lerArq3(ListaNota *lista, const char *nome); 
+   em uma AVL tree                                 */
+Curso* lerArq1(const char *nome);
+
+/* lê o arquivo 1 com os microdados do ENADE, insere 
+   em um vetor dinâmico e o ordena                 */
+void lerArq3(VetorNotas *v, const char *nome);
 
 #endif /* UTILS_H */
